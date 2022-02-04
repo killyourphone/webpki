@@ -312,7 +312,7 @@ struct AlgorithmIdentifier {
 
 impl AlgorithmIdentifier {
     fn matches_algorithm_id_value(&self, encoded: untrusted::Input) -> bool {
-        encoded == self.asn1_id_value
+        encoded.as_slice_less_safe() == self.asn1_id_value.as_slice_less_safe()
     }
 }
 
